@@ -1,0 +1,41 @@
+@startuml
+
+!define TABLE_BORDER_COLOR #AAAAAA
+!define TABLE_HEADER_COLOR #CCCCCC
+!define TABLE_ROW_COLOR #EEEEEE
+!define RELATION_COLOR #999999
+
+!define ENTITY_START_ROW |||
+!define ENTITY_END_ROW |||
+
+!define PK_ROW (PK)
+!define FK_ROW ~ FK ~
+!define FIELD_ROW |
+
+skinparam class {
+    BorderColor TABLE_BORDER_COLOR
+    HeaderBackgroundColor TABLE_HEADER_COLOR
+    BackgroundColor TABLE_ROW_COLOR
+}
+
+entity "Session" as session {
+    +SessionId PK_ROW INT
+    SessionHash FIELD_ROW VARCHAR
+    AccountId FIELD_ROW INT
+    Issuer FIELD_ROW VARCHAR
+    Audience FIELD_ROW VARCHAR
+    IssuedAt FIELD_ROW TIMESTAMP
+    ExpireAt FIELD_ROW TIMESTAMP
+}
+
+entity "Activity" as activity {
+    +ActivityId PK_ROW INT
+    Status FIELD_ROW VARCHAR
+    Code FIELD_ROW VARCHAR
+    Method FIELD_ROW VARCHAR
+    Service FIELD_ROW VARCHAR
+    Message FIELD_ROW TEXT
+    CreatedAt FIELD_ROW TIMESTAMP
+}
+
+@enduml
